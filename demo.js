@@ -1,13 +1,21 @@
-let productNameInputElement = document.getElementById("product-name");
-let remainingCharsElement = document.getElementById("remaining-chars");
+const productNameInputElement = document.getElementById("product-name");
+const remainingCharsElement = document.getElementById("remaining-chars");
 
-let maxAllowedChars = productNameInputElement.maxLength;
+const maxAllowedChars = productNameInputElement.maxLength;
 
 function updateRemainingCharacter(event) {
-  let enteredText = event.target.value;
-  let enteredTextLenght = enteredText.length;
+  const enteredText = event.target.value;
+  const enteredTextLenght = enteredText.length;
 
-  let remainingCharacters = maxAllowedChars - enteredTextLenght;
+  const remainingCharacters = maxAllowedChars - enteredTextLenght;
+
+  if (remainingCharacters < 10) {
+    productNameInputElement.classList.add("warning");
+    remainingCharsElement.classList.add("warning");
+  } else {
+    productNameInputElement.classList.remove("warning");
+    remainingCharsElement.classList.remove("warning");
+  }
 
   remainingCharsElement.textContent = remainingCharacters;
 }
